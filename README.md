@@ -1,84 +1,95 @@
-# Games
+  <h1 align="center">Command-Line Game</h3>
 
-  <h3 align="center">Game</h3>
-  
-<!-- CODE SPECIFICATIONS -->
+<br />
+
+### About The Project
+
+* This project started with the motivation to create a command-line game in Python using GraphWin Objects.
+* The user starts the game from a room and has to move into other rooms to gather objects in his inventory that will help solve a puzzle.
+* To win the game, the user has to go to a specific room with specific objects inside his inventory.
+* Once the puzzle solved, a score is calculated based on the user's performance. The highest score (100%) can be reached if the user manages to solve the game with the least amount of commands and the least items in his inventory.
+
+<br />
+
+### Usage
+Before running `Game.py`, make sure to put `space.png` and `rooms_page_background.png` in the same folder. 
+
+<br />
+
 ### Code Specifications
+* Code Input: 
+	* Command entered by the user: `go [direction]`, `get [object]`, `look [room]` or `view inventory`.
 
+* Code Output:
+	* A change in position/room with a message noticing it if the user’s command is `go`.
+	* A message with a description of the object the user picked up if his command is `get`.
+	* A message with the description of the room and the objects in this room if the user’s command is `look`.
+	* A list of all the objects the user picked up if his command is `view inventory`
+	* A message noticing the user won together with his score if the user has solved the puzzle.
 
-Goal: Create a game where the user goes from a room to another to gather objects and solve a puzzle.
+* Relations:
+	* For the `go` command:
+		* Going North: x, y = x-1, y+0
+		* Going South: x, y = x+1, y+0	
+		* Going East: x, y = x+0, y+1
+		* Going West: x, y = x+0, y-1
 
-Code Input: Command entered by the user: “go [direction]”, “get [object]”, “look [room]” or “view inventory”.
+	* For the `get` command:
+		* Inventory = Inventory + Append any new object
 
-Code Output:
-* A change in position/room with a message noticing it if the user’s command is “go”.
-* A message with a description of the object the user picked up if his command is “get”.
-* A message with the description of the room and the objects in this room if the user’s command is “look”.
-* A list of all the objects the user picked up if his command is “view inventory”
-* A message noticing the user won together with his score if the user has solved the puzzle.
+	* When the user wins:  
+		* Score (%) = 9/(number of commands entered by user)*60+3/(number of objects in inventory)*40
 
-Relations:
-* For the go command:
-	* Going North: x, y = x-1, y+0
-	* Going South: x, y = x+1, y+0	
-	* Going East: x, y = x+0, y+1
-	* Going West: x, y = x+0, y-1
+<br />
 
-* For the get command:
-** Inventory = Inventory + Append any new object
-
-When the user wins:
-Score (%) = 9/(number of commands entered by user)*60+3/(number of objects in inventory)*40
-
-
-<!-- PSEUDO-CODE -->
 ### Pseudo-Code
 
-Import the graphics library
+**Import the graphics library**
 
-Functions:
-F1 to F6: Create a function for each room (6) that will be called every time the user enters the room. Each function will return:
-A small description of the room
-A list of the objects that are in the room
-A list of the possible directions to go
-A list of the possible rooms to look at (nearby rooms) once in this room.
+**Functions:**
+* F1 to F6: Create a function for each room (6) that will be called every time the user enters the room. 
+	* Each function will return:
+		* A small description of the room
+		* A list of the objects that are in the room
+		* A list of the possible directions to go
+		* A list of the possible rooms to look at (nearby rooms) once in this room.
 
-F7: Create a function that receives direction and possible directions as parameters and validates if the direction the user enters as a command is possible.
-If the direction is not in the list of possible directions:
-	Return false (it is not possible to go in this direction)
-Otherwise return true (it is possible to go in this direction)
+* F7: Create a function that receives direction and possible directions as parameters and validates if the direction the user enters as a command is possible.
+	* If the direction is not in the list of possible directions:
+		* Return false (it is not possible to go in this direction)
+		* Otherwise return true (it is possible to go in this direction)
 
-F8: Create a function that receives the room and possible looks and validates if the room the user wants to look at is possible.
-	If the room is not in the possible looks list:
-		Return false (looking at this room is not possible)
-	Otherwise return true (looking at this room is possible)
+* F8: Create a function that receives the room and possible looks and validates if the room the user wants to look at is possible.
+	* If the room is not in the possible looks list:
+		* Return false (looking at this room is not possible)
+		* Otherwise return true (looking at this room is possible)
 
-F9: Create a function to validate if the user entered a valid command: “go [direction]”, “get [object]”, “look [room]” or “view inventory” that receives the command as a parameter.
-Split the command by space 
-If there are less than 2 separate words:
-	Return false (the command is not valid)
-If the first word of command is “go”, “get”, “look” or the whole command is “view inventory”:
-	Return true (the command is valid)
+* F9: Create a function to validate if the user entered a valid command: `go [direction]`, `get [object]`, `look [room]` or `view inventory` that receives the command as a parameter.
+	* Split the command by space 
+	* If there are less than 2 separate words:
+		* Return false (the command is not valid)
+	* If the first word of command is `go`, `get`, `look` or the whole command is `view inventory`:
+		* Return true (the command is valid)
 
-F10: Create a function that will manage the go command by changing the position of the user depending on his direction thanks to D2. This function will receive as inputs the current position of the user and the direction the user wants to go.
-It will return the following outputs with the following relations depending on the direction chosen:
-Going North: current position in x, current position in y = current position in x - 1, current position in y + 0
-Going South:  current position in x, current position in y = current position in x + 1, current position in y + 0
-Going East:  current position in x, current position in y = current position in x + 0, current position in y + 1
-Going West: current position in x, current position in y = current position in x + 0, current position in y - 1
+* F10: Create a function that will manage the go command by changing the position of the user depending on his direction thanks to D2. This function will receive as inputs the current position of the user and the direction the user wants to go.
+	* It will return the following outputs with the following relations depending on the direction chosen:
+		* Going North: current position in x, current position in y = current position in x - 1, current position in y + 0
+		* Going South:  current position in x, current position in y = current position in x + 1, current position in y + 0
+		* Going East:  current position in x, current position in y = current position in x + 0, current position in y + 1
+		* Going West: current position in x, current position in y = current position in x + 0, current position in y - 1
 
-F11: Create a function that receives the graph window as a parameter and gets the command entry of the user on a window. 
-Create an entry box at point (550, 90) with width 30
-Set its size to 10
-Set its fill to “white”
-Set the text color inside the entry box to “black”
-Draw the entry box on the window
+* F11: Create a function that receives the graph window as a parameter and gets the command entry of the user on a window. 
+    * Create an entry box at point (550, 90) with width 30
+    * Set its size to 10
+	* Set its fill to “white”
+	* Set the text color inside the entry box to “black”
+	* Draw the entry box on the window
 
-Create an infinite loop:
-	Get the key pressed by the player
-	If the key is “enter”/”return”:
-		Close the graph window received as a parameter
-		Return the text that the user entered in the entry box
+	* Create an infinite loop:
+		* Get the key pressed by the player
+		* If the key is “enter”/”return”:
+			* Close the graph window received as a parameter
+			* Return the text that the user entered in the entry box
 
 F12: Create a function that takes the player’s current position as a parameter and converts it into coordinates on the window to display a green dot over a map to indicate its current position.
 If player’s current position is [0, 1]:
@@ -198,22 +209,22 @@ Create a while loop that stops when the user wins or presses “enter”:
 Get the user’s command using F11.
 Check if his command is valid using F9, if not warn him it is not.
 
-If the user’s command is “go”:
+If the user’s command is `go`:
 Get the direction inside the command. 
 Check if the direction is possible using F7. If it is not possible, warn the user.
 Get the new current position using F10.
 
-If the user’s command is “look”:
+If the user’s command is `look`:
 	Get the room inside the command.
 	Check if it is possible to look at that room using F8. If it is not possible, warn the user.
 	Display the description of the room using D4
 
-If the user’s command is “get”:
+If the user’s command is `get`:
 	Get the object inside the command.
 	Check if the object is in the room using F1 to F6 and if it is not already in the inventory.
 	Append the new object to the inventory. 
 
-If the user’s command is “view inventory”:
+If the user’s command is `view inventory`:
 	Display the list of objects inside the inventory or a message saying the inventory is empty in case it is. 
 
 If the user is in Room 6 with the correct objects to solve the puzzle:
