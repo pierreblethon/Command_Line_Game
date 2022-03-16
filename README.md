@@ -6,7 +6,7 @@ Test
 
 
 
-##Code Specifications
+------------------------------------------------------------------------------Code Specifications--------------------------------------------------------------------------------
 
 
 Goal: Create a game where the user goes from a room to another to gather objects and solve a puzzle.
