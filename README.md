@@ -1,7 +1,11 @@
   <h1 align="center">Command-Line Game</h3>
 
+<p align="center">
+  <a href="https://user-images.githubusercontent.com/98318608/158876558-033760d1-e68d-4b9b-8df9-2810a8232a7d.JPG">
+    <img src="https://user-images.githubusercontent.com/98318608/158876558-033760d1-e68d-4b9b-8df9-2810a8232a7d.JPG" width="600">
+  </a>
 <br />
-
+	
 ### About The Project
 
 * This project started with the motivation to create a command-line game in Python using GraphWin Objects.
@@ -12,7 +16,10 @@
 <br />
 
 ### Usage
-Before running `Game.py`, make sure to put `space.png` and `rooms_page_background.png` in the same folder. 
+* `Game.py` originally runs on PyCharm.
+* You'll need to download the [graphics.py](https://mcsp.wartburg.edu/zelle/python/graphics.py) library to run the game (make sure to add it to your Python library folder). 
+* Put `space.png` and `rooms_page_background.png` in the same folder as `Game.py`.
+* Have fun! :)
 
 <br />
 
@@ -212,5 +219,4 @@ Before running `Game.py`, make sure to put `space.png` and `rooms_page_backgroun
 * Print the current action in a file
 * End the while loop
 
-**Close the file**<br />
 **Call Main**
